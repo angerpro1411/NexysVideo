@@ -261,9 +261,6 @@ architecture RTL of AXIL_SLAVE_ARBITRATOR is
     end procedure WHICH_PERIPH_FUNC;
     
     signal ADDR_ERR_WR,ADDR_ERR_RD : std_logic;
-        
-	type REG_ARR is array (0 to NUM_REGS-1) of std_logic_vector(DATA_WIDTH-1 downto 0);
-	signal AXI_SLAVE_R : REG_ARR;
 	
 	--AXILITE signals to transactions
 	signal WRITEnAWRITE_VALID_EN: std_logic;
