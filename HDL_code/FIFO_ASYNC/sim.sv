@@ -85,7 +85,8 @@ module sim();
         //Create a random array
         foreach(arr[i])
             arr[i] = $urandom;
-
+        WR = 0;
+        RD = 0;
         repeat(2)
             @(negedge WR_CLK);
 
@@ -103,6 +104,16 @@ module sim();
 
         small_test();
 
+        //write 10 times
+        foreach(arr[i])
+            arr[i] = $urandom;
+        foreach(arr[i])
+            WR_CMD(arr[i]);
+        for (int i=0;i<8;i++) begin
+            RD_CMD(d_o);
+            check_read_data: assert (d_o == arr[i])
+                else $error("Assertion failed at index %0d",i);
+        end
 
     end
 
